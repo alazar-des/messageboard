@@ -1,0 +1,47 @@
+extends layout 
+
+block content  
+  title #{title}
+
+  div(class="container mx-auto flex items-center justify-center")
+    div(class="w-full pt-2 md:p-4") 
+      div(class="mx-auto md:p-6 sm:w-3/4")
+        h1(class="text-2xl font-bold text-indigo-500 text-centr mb-4 text-center") Sign-up
+        div(class="bg-while shadow-md rounded md:px-8 pt-6 pb-8 mt-4")
+          form(action="POST" method="")
+            div(class="mb-8")
+              label(for="username" class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") username 
+              div(class="input-container")
+                div(class="svg-constainer")
+                  
+                input(type="text" name="username" id="username" placeholder="username" class="input")
+              strong(class="message") username is required
+
+            div(class="mb-8")
+              label(for="password" class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") password  
+              div(class="input-container")
+                div(class="svg-constainer")
+                  
+                input(type="password" name="password" id="password" placeholder="*******" class="input")
+              strong(class="message") password is required
+            
+            div(class="mb-8")
+              label(for="confirmpassword" class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") confirm password  
+              div(class="input-container")
+                div(class="svg-constainer")
+                  
+                input(type="password" name="confirmpassword" id="confirmpassword" placeholder="*******" class="input")
+              strong(class="message") password confirmation is required
+
+            div(class="mb-4")
+              div(class="form-btn-container")
+                button(type="submit" class="form-btn") Register
+                div 
+                  span(class="text-sm") Already have an account? 
+                  a(href="/users/login" class="another-action") Log in

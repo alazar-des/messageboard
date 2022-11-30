@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(class="text-gray-600 font-body")
+    div(class="grid md:grid-cols-5")
+      div(class="md:col-span-1 md:flex justify-end")
+        nav(class="text-right")
+          div(class="flex justify-between items-center")
+            h1(class="font-bold uppercase text-lg p-4")
+              a(href="/" class="hover:text-gray-700 transition ease-in-out duration-500") MembersOnly 
+            div(class="cursor-pointer md:hidden" id="burger")
+              span(class="text-3xl px-4 font-bold") &#8801;
+          ul(class="mt-6 hidden md:block" id="menu")
+            li(class="text-gray-700 font-bold py-1")
+              a(href="/" class="active") Home
+
+            li(class="text-gray-700 font-bold py-1")
+              a(href="/messages/create") Create Message
+
+            li(class="text-gray-700 font-bold py-1")
+              a(href="/users/member") Become a Member 
+
+      main(class="px-4 md:px-16 bg-gray-100 md:col-span-4")
+        div(class="flex justify-center md:justify-end p-4 h-20 items-center")
+          a(href="/users/login" class="btn") Log in 
+          a(href="/users/signup" class="btn") Sign up
+        block content

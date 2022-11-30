@@ -1,0 +1,24 @@
+extends layout 
+
+block content  
+  title #{title}
+
+  div(class="container mx-auto flex items-center justify-center")
+    div(class="w-full pt-2.p-4") 
+      div(class="mx-auto md:p-6 w-3/4")
+        h1(class="text-3xl text-indigo-500 text-centr mb-4 text-center") Become a Member
+        div(class="bg-while shadow-md rounded px-8 pt-6 pb-8 mt-4")
+          form(action="POST" method="")
+            div(class="mb-8")
+              label(for="code" class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") Enter member pass code: 
+              div(class="input-container")
+                div(class="svg-constainer")
+                  
+                input(type="text" name="code" id="code" placeholder="member code" class="input")
+              strong(class="message") member code is required
+            
+            div(class="mb-4")
+              div(class="form-btn-container")
+                button(type="submit" class="form-btn") Submit

@@ -1,0 +1,32 @@
+extends layout 
+
+block content  
+  title #{title}
+
+  div(class="container mx-auto flex items-center justify-center")
+    div(class="w-full pt-2.p-4") 
+      div(class="mx-auto md:p-6 md:w-3/4")
+        h1(class="text-3xl text-indigo-500 text-centr mb-4 text-center") Create a Message
+        div(class="bg-while shadow-md rounded px-8 pt-6 pb-8 mt-4")
+          form(action="POST" method="")
+            div(class="mb-8")
+              label(for="title" class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") Title 
+              div(class="input-container")
+                div(class="svg-constainer")
+                  
+                input(type="text" name="title" id="title" placeholder="title" class="input")
+              strong(class="message") title is required
+
+            div(class="mb-8")
+              div(class="lable")
+                sapn(class="text-red-500") &nbsp;*
+                span(class="ml-1") Message    
+              div(class="input-container") 
+                textarea(rows="6" name="message" placeholder="Enter your message here..." class="input")
+              strong(class="message") message is required
+            
+            div(class="mb-4")
+              div(class="form-btn-container")
+                button(type="submit" class="form-btn") Submit
