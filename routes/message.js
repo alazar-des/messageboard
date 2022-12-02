@@ -1,12 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+const auth = require("../controller/auth");
+
 const message_controller = require("../controller/messageController");
 
 router.get("/", message_controller.messages);
 
-router.get("/create", message_controller.message_get);
+router.get("/create", auth.checkAuthenticated, message_controller.message_get);
 
-router.post("/create", message_controller.message_post);
+router.post("/create", auth.checkAuthenticated, message_controller.message_post);
 
 module.exports = router;
