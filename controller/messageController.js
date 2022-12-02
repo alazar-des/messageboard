@@ -4,10 +4,21 @@ const auth = require("./auth");
 
 const { body, validationResult } = require("express-validator");
 const { connect } = require("mongoose");
+const message = require("../models/message");
 
 exports.messages = (req, res, next) => {
-  
-  res.render("index", { title: "Messages" });
+  Message.find({})
+    .sort({ date: -1 })
+    .populate("user")
+    .exec((err, messages) => {
+      console.log(messages);
+      if (err) return next(err);
+      console.log(messages);
+      res.render("index", {
+        title: "Messages",
+        messages,
+      });
+    });
 };
 
 exports.message_get = (req, res, next) => {
