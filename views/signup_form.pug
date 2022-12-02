@@ -8,16 +8,21 @@ block content
       div(class="mx-auto md:p-6 sm:w-3/4")
         h1(class="text-2xl font-bold text-indigo-500 text-centr mb-4 text-center") Sign-up
         div(class="bg-while shadow-md rounded md:px-8 pt-6 pb-8 mt-4")
-          form(action="POST" method="")
+          form(action="" method="POST")
             div(class="mb-8")
               label(for="username" class="lable")
                 sapn(class="text-red-500") &nbsp;*
                 span(class="ml-1") username 
               div(class="input-container")
                 div(class="svg-constainer")
-                  
-                input(type="text" name="username" id="username" placeholder="username" class="input")
-              strong(class="message") username is required
+                
+                - let usernameError = []
+                if errors
+                  - usernameError = errors.filter(error => error.param === "username")
+                input(type="text" name="username" id="username" placeholder="username" class="input" value=undefined==user ? "" : user.username class=usernameError.length !== 0 ? "error_input" : "")
+                
+                if usernameError.length !== 0
+                  strong(class="error_msg") #{usernameError[0].msg}
 
             div(class="mb-8")
               label(for="password" class="lable")
@@ -26,8 +31,13 @@ block content
               div(class="input-container")
                 div(class="svg-constainer")
                   
-                input(type="password" name="password" id="password" placeholder="*******" class="input")
-              strong(class="message") password is required
+                - let passwordError = []
+                if errors
+                  - passwordError = errors.filter(error => error.param === "password")
+                input(type="password" name="password" id="password" placeholder="*******" class="input" value=undefined==user ? "" : user.password class=passwordError.length !== 0 ? "error_input" : "")
+              
+                if passwordError.length !== 0
+                  strong(class="error_msg") #{passwordError[0].msg}
             
             div(class="mb-8")
               label(for="confirmpassword" class="lable")
@@ -36,8 +46,12 @@ block content
               div(class="input-container")
                 div(class="svg-constainer")
                   
-                input(type="password" name="confirmpassword" id="confirmpassword" placeholder="*******" class="input")
-              strong(class="message") password confirmation is required
+                - let confirmError = []
+                if errors
+                  - confirmError = errors.filter(error => error.param === "confirmpassword")
+                input(type="password" name="confirmpassword" id="confirmpassword" placeholder="*******" class="input" value=undefined==user ? "" : user.confirmpassword class=confirmError.length !== 0 ? "error_input" : "")
+                if confirmError.length !== 0
+                  strong(class="error_msg") #{confirmError[0].msg}              
 
             div(class="mb-4")
               div(class="form-btn-container")
