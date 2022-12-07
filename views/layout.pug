@@ -22,7 +22,7 @@ html(lang='en')
             li(class="text-gray-700 font-bold py-1")
               a(href=locals.currentUser !== undefined ? "/messages/create" : "/users/login") Create Message
 
-            if (locals.currentUser)
+            if locals.currentUser && !locals.currentUser.membership_status
               li(class="text-gray-700 font-bold py-1")
                 a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login") Become a Member 
 
