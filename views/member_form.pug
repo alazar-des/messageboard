@@ -8,7 +8,7 @@ block content
       div(class="mx-auto md:p-6 w-3/4")
         h1(class="text-3xl text-indigo-500 text-centr mb-4 text-center") Become a Member
         div(class="bg-while shadow-md rounded px-8 pt-6 pb-8 mt-4")
-          form(action="POST" method="")
+          form(action="" method="POST")
             div(class="mb-8")
               label(for="code" class="lable")
                 sapn(class="text-red-500") &nbsp;*
@@ -16,8 +16,12 @@ block content
               div(class="input-container")
                 div(class="svg-constainer")
                   
+                - let codeError = []
+                if errors
+                  - codeError = errors.filter(error => error.param === "code")
                 input(type="text" name="code" id="code" placeholder="member code" class="input")
-              strong(class="message") member code is required
+                if codeError.length !== 0
+                  strong(class="error_msg") #{codeError[0].msg}
             
             div(class="mb-4")
               div(class="form-btn-container")

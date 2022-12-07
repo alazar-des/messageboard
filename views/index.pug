@@ -9,10 +9,11 @@ block content
         p(class="capitalize mb-4 font-bold") #{message.title} 
         p(class="") #{message.body}
         hr(class="")
-        div(class="md:flex justify-between mt-2")
-          div 
-            span(class="text-sm italic") Posted by 
-            span(class="font-semibold") #{message.user.user_name} 
-          div 
-            sapn(class="text-sm italic") Posted on 
-            span(class="font-semibold text-sm") #{message.posted_date}
+        if (locals.currentUser && locals.currentUser.membership_status)
+          div(class="md:flex justify-between mt-2")
+            div 
+              span(class="text-sm italic") Posted by 
+              span(class="font-semibold") #{message.user.user_name} 
+            div 
+              sapn(class="text-sm italic") Posted on 
+              span(class="font-semibold text-sm") #{message.posted_date}

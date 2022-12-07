@@ -11,9 +11,7 @@ exports.messages = (req, res, next) => {
     .sort({ date: -1 })
     .populate("user")
     .exec((err, messages) => {
-      console.log(messages);
       if (err) return next(err);
-      console.log(messages);
       res.render("index", {
         title: "Messages",
         messages,
@@ -51,7 +49,7 @@ exports.message_post = [
     const msg = new Message({
       title: req.body.title,
       body: req.body.message,
-      user: req.user,
+      user: req.user._id,
     }).save((err) => {
       if (err) return next(err);
       res.redirect("/");

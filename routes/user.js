@@ -20,6 +20,6 @@ router.get("/member", auth.checkAuthenticated, auth.member_form_get);
 //Post become a member form
 router.post("/member", auth.checkAuthenticated, auth.member_form_post);
 
-router.get("/logout", auth.checkLoggedIn, auth.logout);
+router.get("/logout", auth.logout);
 
 module.exports = router;

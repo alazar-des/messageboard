@@ -2,6 +2,7 @@ const User = require("../models/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
+require("dotenv").config();
 
 const { body, validationResult } = require("express-validator");
 
@@ -25,7 +26,7 @@ const authUser = (username, password, done) => {
 passport.use(new LocalStrategy(authUser));
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.deserializeUser(function (id, done) {
@@ -122,4 +123,30 @@ exports.member_form_get = (req, res, next) => {
   res.render("member_form", { title: "Become a Memeber" });
 };
 
-exports.member_form_post = [];
+exports.member_form_post = [
+  body("code", "member code must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .custom((value) => {
+      if (value !== process.env.MEMBER_SECRET_CODE) {
+        throw new Error("Wrong secret code. Try agian.");
+      } else {
+        return true;
+      }
+    })
+    .escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("member_form", 
+      { title: "Become a member",
+        errors: errors.array()
+     });
+     return;
+    }
+    User.findByIdAndUpdate(req.user, { membership_status: true }, (err, user) => {
+      if (err) return next(err);
+      res.redirect("/");
+    })
+  },
+];
