@@ -7,8 +7,8 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="/javascripts/script.js", defer) 
   body(class="text-gray-600 font-body")
-    div(class="grid md:grid-cols-5")
-      div(class="md:col-span-1 md:flex justify-end")
+    div(class="grid md:grid-cols-5 relative")
+      div(class="md:col-span-1 md:flex justify-end md:sticky md:h-screen items-start top-0")
         nav(class="text-right")
           div(class="flex justify-between items-center")
             h1(class="font-bold uppercase text-lg p-4")
@@ -17,17 +17,17 @@ html(lang='en')
               span(class="text-3xl px-4 font-bold") &#8801;
           ul(class="mt-6 hidden md:block" id="menu")
             li(class="text-gray-700 font-bold py-1")
-              a(href="/" class="active") Home
+              a(href="/" class=title==="Messages" ? "active" : undefined) Home
 
             li(class="text-gray-700 font-bold py-1")
-              a(href=locals.currentUser !== undefined ? "/messages/create" : "/users/login") Create Message
+              a(href=locals.currentUser !== undefined ? "/messages/create" : "/users/login" class=title==="Create message" ? "active" : undefined) Create Message
 
             if locals.currentUser && !locals.currentUser.membership_status
               li(class="text-gray-700 font-bold py-1")
-                a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login") Become a Member 
+                a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login" class=title==="Become a Memeber" ? "active" : undefined) Become a Member 
 
-      main(class="px-4 md:px-16 bg-gray-100 md:col-span-4")
-        div(class="flex justify-center md:justify-end p-4 h-20 items-center")
+      main(class="px-4 md:px-16 bg-gray-100 md:col-span-4 relative")
+        div(class="flex justify-center md:justify-end p-4 h-20 items-center md:sticky")
           if locals.currentUser
             a(href="/users/logout" class="btn") Log out 
           else

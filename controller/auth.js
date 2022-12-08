@@ -154,7 +154,7 @@ exports.member_form_post = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render("member_form", {
-        title: "Become a member",
+        title: "Become a Memeber",
         errors: errors.array(),
       });
       return;
