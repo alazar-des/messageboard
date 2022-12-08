@@ -5,11 +5,12 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     script(src="/javascripts/script.js", defer) 
   body(class="text-gray-600 font-body")
     div(class="grid md:grid-cols-5 relative")
       div(class="pr-2 md:col-span-1 md:flex justify-end md:sticky md:h-screen items-start top-0")
-        nav(class="text-right")
+        nav(class="text-right relative md:h-full")
           div(class="flex justify-between items-center")
             h1(class="font-bold uppercase text-lg p-4")
               a(href="/" class="hover:text-gray-700 transition ease-in-out duration-500") MembersOnly 
@@ -25,6 +26,13 @@ html(lang='en')
             if locals.currentUser && !locals.currentUser.membership_status
               li(class="text-gray-700 font-bold py-1")
                 a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login" class="pr-3 border-r-4 border-white" class=title==="Become a Memeber" ? "active" : undefined) Become a Member 
+        
+          div(class="hidden md:flex items-center gap-2 mx-2 font-bold text-gray-700 flex-end absolute bottom-4")
+            p by: Alazar
+            div
+              a(href="https://github.com/alazar-des/messageboard" target="_blank") 
+                span Github 
+                i(class="fa fa-github text-sm")
 
       main(class="px-4 md:px-16 md:col-span-4 relative")
         div(class="flex justify-center md:justify-end p-4 h-20 items-center md:sticky")

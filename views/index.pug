@@ -3,9 +3,9 @@ extends layout
 block content
   h1(class="text-2xl font-bold mb-6") #{title}
 
-  div(class="bg-gray-50")
+  div(class="bg-gray-25")
     each message in messages
-      div(class="md:my-8 mb-4 mx-2 shadow-sm p-4 bg-white")
+      div(class="md:my-8 my-4 mx-2 shadow-sm p-4 bg-white rounded")
         p(class="capitalize mb-4 font-bold") #{message.title} 
         p(class="mb-4") #{message.body}
         if (locals.currentUser && locals.currentUser.membership_status)
