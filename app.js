@@ -14,7 +14,8 @@ const messageRouter = require("./routes/message");
 
 var app = express();
 
-const mongoDB = process.env.MONGODB_URI;
+const mongodb_uri = "mongodb+srv://membersOnly:Xc2GU7eckhaA7lEb@membersonly.cwecmmp.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || mongodb_uri;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
