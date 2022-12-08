@@ -5,11 +5,11 @@ block content
 
   div(class="")
     each message in messages
-      div(class="md:mr-8 mb-4 shadow-lg py-4 bg-white")
+      div(class="md:mr-8 mb-4 shadow-md p-4 bg-white")
         p(class="capitalize mb-4 font-bold") #{message.title} 
         p(class="") #{message.body}
-        hr(class="")
         if (locals.currentUser && locals.currentUser.membership_status)
+          hr(class="")
           div(class="md:flex justify-between mt-2")
             div 
               span(class="text-sm italic") Posted by 

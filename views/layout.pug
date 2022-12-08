@@ -8,7 +8,7 @@ html(lang='en')
     script(src="/javascripts/script.js", defer) 
   body(class="text-gray-600 font-body")
     div(class="grid md:grid-cols-5 relative")
-      div(class="md:col-span-1 md:flex justify-end md:sticky md:h-screen items-start top-0")
+      div(class="pr-2 md:col-span-1 md:flex justify-end md:sticky md:h-screen items-start top-0")
         nav(class="text-right")
           div(class="flex justify-between items-center")
             h1(class="font-bold uppercase text-lg p-4")
@@ -26,7 +26,7 @@ html(lang='en')
               li(class="text-gray-700 font-bold py-1")
                 a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login" class="pr-3 border-r-4 border-white" class=title==="Become a Memeber" ? "active" : undefined) Become a Member 
 
-      main(class="px-4 md:px-16 bg-gray-100 md:col-span-4 relative")
+      main(class="px-4 md:px-16 bg-gray-50 md:col-span-4 relative")
         div(class="flex justify-center md:justify-end p-4 h-20 items-center md:sticky")
           if locals.currentUser
             a(href="/users/logout" class="btn") Log out 
