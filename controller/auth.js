@@ -45,6 +45,21 @@ exports.checkLoggedIn = (req, res, next) => {
   next();
 };
 
+exports.canDelete = (role) => {
+  return (req, res, next) => {
+    if (req.user.role !== role) {
+      res.render("error", {
+        message: "Not allowed",
+        error: {
+          status: 401,
+          stack: "not allowed",
+        },
+      });
+    }
+    next();
+  };
+};
+
 exports.signup_get = (req, res, next) => {
   res.render("signup_form", { title: "Signup" });
 };
@@ -138,15 +153,19 @@ exports.member_form_post = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.render("member_form", 
-      { title: "Become a member",
-        errors: errors.array()
-     });
-     return;
+      res.render("member_form", {
+        title: "Become a member",
+        errors: errors.array(),
+      });
+      return;
     }
-    User.findByIdAndUpdate(req.user, { membership_status: true }, (err, user) => {
-      if (err) return next(err);
-      res.redirect("/");
-    })
+    User.findByIdAndUpdate(
+      req.user,
+      { membership_status: true },
+      (err, user) => {
+        if (err) return next(err);
+        res.redirect("/");
+      }
+    );
   },
 ];

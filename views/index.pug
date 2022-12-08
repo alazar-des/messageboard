@@ -17,3 +17,6 @@ block content
             div 
               sapn(class="text-sm italic") Posted on 
               span(class="font-semibold text-sm") #{message.posted_date}
+        if (locals.currentUser && locals.currentUser.role === "admin")
+          div(class="flex justify-end mt-2")
+            a(href=message.url+'/delete' class="transition duration-500 bg-red-500 hover:bg-red-700 text-white text-sm font-bold py-1 px-2 rounded focus:outline-none;") Delete

@@ -56,3 +56,10 @@ exports.message_post = [
     });
   },
 ];
+
+exports.message_delete = (req, res, next) => {
+  Message.findByIdAndDelete(req.params.message_id, (err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
+};
