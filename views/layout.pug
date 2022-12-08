@@ -17,14 +17,14 @@ html(lang='en')
               span(class="text-3xl px-4 font-bold") &#8801;
           ul(class="mt-6 hidden md:block" id="menu")
             li(class="text-gray-700 font-bold py-1")
-              a(href="/" class=title==="Messages" ? "active" : undefined) Home
+              a(href="/" class="pr-3 border-r-4 border-white" class=title==="Messages" ? "active" : undefined) Home
 
             li(class="text-gray-700 font-bold py-1")
-              a(href=locals.currentUser !== undefined ? "/messages/create" : "/users/login" class=title==="Create message" ? "active" : undefined) Create Message
+              a(href=locals.currentUser !== undefined ? "/messages/create" : "/users/login" class="pr-3 border-r-4 border-white" class=title==="Create message" ? "active" : undefined) Create Message
 
             if locals.currentUser && !locals.currentUser.membership_status
               li(class="text-gray-700 font-bold py-1")
-                a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login" class=title==="Become a Memeber" ? "active" : undefined) Become a Member 
+                a(href=locals.currentUser !== undefined ? "/users/member" : "/users/login" class="pr-3 border-r-4 border-white" class=title==="Become a Memeber" ? "active" : undefined) Become a Member 
 
       main(class="px-4 md:px-16 bg-gray-100 md:col-span-4 relative")
         div(class="flex justify-center md:justify-end p-4 h-20 items-center md:sticky")
