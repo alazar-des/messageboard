@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  user_name: { type: String, require: true },
+  user_name: { type: String, unique: true, require: true },
   password: { type: String, require: true },
   membership_status: { type: Boolean, require: true, default: false },
   avator: { type: String },
